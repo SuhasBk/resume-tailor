@@ -47,10 +47,11 @@ services:
   db:
     image: postgres:16-alpine
     container_name: db
+    env_file:
+      - secret.env
     environment:
       POSTGRES_DB: tailor
       POSTGRES_USER: tailor
-      POSTGRES_PASSWORD: tailor
     ports:
       - "5432:5432"
     volumes:
@@ -89,10 +90,11 @@ services:
     container_name: interface-service
     ports:
       - "8080:8080"
+    env_file:
+      - secret.env
     environment:
       DB_URL: jdbc:postgresql://db:5432/tailor
       DB_USER: tailor
-      DB_PASSWORD: tailor
       BRAIN_BASE_URL: http://brain-service:8000
       BRAIN_TAILOR_PATH: /tailor
     depends_on:
@@ -139,8 +141,8 @@ services:
     configs:
       - source: grafana_datasource
         target: /etc/grafana/provisioning/datasources/datasource.yml
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+    env_file:
+      - secret.env
     volumes:
       - grafana_data:/var/lib/grafana
     depends_on:
