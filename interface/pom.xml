@@ -17,8 +17,8 @@
 	<description>Interface Service – gateway and orchestrator for the Observed-AI ecosystem</description>
 
 	<properties>
-		<!-- Target Java 17 locally; Docker image uses Java 21 -->
-		<java.version>17</java.version>
+		<!-- Target Java 21 -->
+		<java.version>21</java.version>
 		<pdfbox.version>3.0.3</pdfbox.version>
 	</properties>
 

@@ -1,3 +1,4 @@
 __pycache__/
 api.env
 secret.env
+.vscode/settings.json
